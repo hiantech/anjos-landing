@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjos - Central Tática de Segurança para Motoristas</title>
+    <style>
+        /* Estilos Base */
+        :root {
+            --primary: #FF7023; /* Laranja de Alerta do Anjos */
+            --dark: #121214;
+            --light: #F4F4F5;
+            --text: #333;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { color: var(--primary); }
+        
+        /* Header */
+        header {
+            background: #ffffff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-black { height: 45px; }
+        nav { display: flex; gap: 20px; }
+        nav a { font-weight: 600; font-size: 0.95rem; }
+
+        /* Hero Section */
+        .hero {
+            background: var(--dark);
+            color: #ffffff;
+            padding: 100px 5%;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #ccc;
+        }
+
+        /* Seções de Conteúdo */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 5%;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: var(--dark);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 10px;
+            display: inline-block;
+            margin-top: 40px;
+        }
+        h3 { color: var(--dark); margin-top: 30px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+
+        /* Legal (O que o Google vai ler) */
+        .legal-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #aaa;
+            text-align: center;
+            padding: 40px 5%;
+            margin-top: 40px;
+        }
+        .logo-white { height: 40px; margin-bottom: 20px; }
+        
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://i.imgur.com/FIzPpWY.png" alt="Logo Anjos Preta" class="logo-black">
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#privacidade">Política de Privacidade</a>
+            <a href="#termos">Termos de Uso</a>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Proteção Tática em Tempo Real</h1>
+        <p>O Anjos é um ecossistema blindado para motoristas profissionais. Muito mais do que um aplicativo de localização, somos a sua central de intervenção imediata através de Geofencing e comunicação de emergência via Rádio PTT.</p>
+    </section>
+
+    <div class="container">
+        <section id="privacidade">
+            <h2>Política de Privacidade</h2>
+            <p><strong>Última atualização: Abril de 2026</strong></p>
+            <p>A sua segurança e privacidade são as prioridades absolutas do aplicativo <strong>Anjos</strong>. Este documento explica de forma transparente como coletamos e utilizamos os seus dados operacionais.</p>
+
+            <div class="legal-box">
+                <h3>1. Coleta de Localização em Segundo Plano (Background Location)</h3>
+                <p>O aplicativo Anjos coleta e monitora dados de localização do seu dispositivo <strong>em segundo plano</strong>, mesmo quando o aplicativo está fechado ou não está em uso na tela. Isso é estritamente necessário para habilitar as seguintes funções vitais de segurança:</p>
+                <ul>
+                    <li><strong>Mural de Ocorrências e Geofencing:</strong> Para alertar o motorista automaticamente, via notificação no sistema operacional, caso ele se aproxime de um raio de 5km de um incidente reportado pelos líderes.</li>
+                    <li><strong>Botão de Pânico Tático:</strong> Para garantir que, ao sofrer uma emergência, a sua rota e posição atual sejam transmitidas em tempo real para os líderes e veículos de apoio, garantindo a interceptação.</li>
+                </ul>
+            </div>
+
+            <div class="legal-box">
+                <h3>2. Uso do Microfone e Áudio</h3>
+                <p>O aplicativo requer acesso ao microfone exclusivamente para o sistema de comunicação de emergência. A captação de áudio <strong>somente é ativada</strong> quando o usuário aciona voluntariamente o modo "Pânico" ou utiliza a função de Rádio Push-to-Talk (PTT). O áudio ambiental pode ser armazenado em servidores seguros temporariamente para fins de provas legais e proteção da integridade física do motorista.</p>
+            </div>
+
+            <h3>3. Compartilhamento de Dados</h3>
+            <p>Seus dados de localização, perfil e áudio (quando ativado) são restritos apenas aos membros verificados da sua franquia/grupo e aos administradores (Líderes) dentro do sistema Anjos. Não vendemos, alugamos ou repassamos seus dados a terceiros em nenhuma hipótese.</p>
+        </section>
+
+        <section id="termos">
+            <h2>Termos de Serviço</h2>
+            <p><strong>1. Natureza do Serviço:</strong> O Anjos é uma ferramenta tecnológica de apoio mútuo e comunicação entre frotas e grupos fechados. O aplicativo não substitui os serviços de segurança pública (Polícia, SAMU) e os desenvolvedores não se responsabilizam por danos físicos ou materiais decorrentes de sinistros no trânsito.</p>
+            
+            <p><strong>2. Conduta do Usuário:</strong> É terminantemente proibido o uso do Botão de Pânico ou do Rádio Geral (raio de 5km) para testes injustificados, trotes ou comunicações que não sejam de emergência tática. Infratores estão sujeitos a banimento imediato pelo Master da plataforma.</p>
+            
+            <p><strong>3. Disponibilidade e Redes:</strong> As funções de voz (WebRTC) e mapa em tempo real dependem de conexão ativa com a internet e sinal de GPS do aparelho do motorista. O Anjos não se responsabiliza por falhas de intervenção causadas por "zonas de sombra" (falta de sinal da operadora) ou restrições de bateria impostas por fabricantes de smartphones.</p>
+        </section>
+    </div>
+
+    <footer>
+        <img src="https://i.imgur.com/JAilfAx.png" alt="Logo Anjos Branca" class="logo-white">
+        <p>&copy; 2026 Anjos App - Segurança e Inteligência Tática para Motoristas. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

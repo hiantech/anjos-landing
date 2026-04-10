@@ -3,192 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjos - Lidere sua Tropa com Segurança</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        anjos: { DEFAULT: '#FF7023', dark: '#E55D12' },
-                        zinc: { 950: '#09090b', 900: '#18181b', 800: '#27272a' }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Anjos - Central Tática de Segurança para Motoristas</title>
     <style>
-        body { font-family: 'Inter', system-ui, sans-serif; scroll-behavior: smooth; }
+        :root { --primary: #FF7023; --dark: #121214; --light: #F4F4F5; --text: #333; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text); background-color: var(--light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { color: var(--primary); }
+        header { background: #ffffff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo-black { height: 45px; }
+        nav { display: flex; gap: 20px; }
+        nav a { font-weight: 600; font-size: 0.95rem; }
+        .hero { background: var(--dark); color: #ffffff; padding: 100px 5%; text-align: center; height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero h1 { font-size: 2.8rem; color: var(--primary); margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #ccc; }
+        footer { background: var(--dark); color: #aaa; text-align: center; padding: 40px 5%; }
+        .logo-white { height: 40px; margin-bottom: 20px; }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 2rem; }
+        }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 antialiased">
+<body>
 
-    <header class="sticky top-0 z-50 bg-white border-b border-zinc-200 shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#"><img src="https://i.imgur.com/FIzPpWY.png" alt="Logo Anjos" class="h-10 w-auto" /></a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-bold text-zinc-900">
-                <a href="#solucao" class="hover:text-anjos transition">A Solução Tática</a>
-                <a href="#arsenal" class="hover:text-anjos transition">O Arsenal</a>
-                <a href="#planos" class="hover:text-anjos transition">Planos de Franquia</a>
-                <a href="#planos" class="bg-anjos text-white px-6 py-2.5 rounded-full hover:bg-anjos-dark transition">Quero ser Master Anjos</a>
-            </div>
+    <header>
+        <a href="index.html"><img src="https://i.imgur.com/FIzPpWY.png" alt="Logo Anjos Preta" class="logo-black"></a>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="termos.html">Termos de Uso</a>
         </nav>
     </header>
 
-    <section class="py-24 md:py-32 relative overflow-hidden">
-        <div class="container mx-auto px-6 text-center relative z-10 flex flex-col items-center">
-            <div class="inline-flex items-center gap-2 border border-orange-800 bg-orange-950/50 text-anjos px-4 py-1.5 rounded-full text-xs font-bold mb-8 uppercase tracking-wide">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                Chega de Caos no WhatsApp. Lidere com Tecnologia.
-            </div>
-            
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl mx-auto">
-                Lidere sua Tropa com <span class="text-anjos">Autoridade e Segurança Absoluta</span>
-            </h1>
-            
-            <p class="text-xl text-zinc-400 max-w-3xl mb-12">
-                O Anjos é a única plataforma tática que transforma seu grupo de motoristas em uma franquia de segurança profissional. Intervenção imediata, rastreamento ativo e proteção contra as travas do Android 15.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                <a href="#planos" class="bg-anjos text-white px-10 py-4 rounded-xl font-bold hover:bg-anjos-dark transition text-lg shadow-lg shadow-anjos/20">
-                    Adquirir Franquia Anjos
-                </a>
-                <a href="#solucao" class="bg-zinc-800 text-white px-10 py-4 rounded-xl font-bold hover:bg-zinc-700 transition text-lg border border-zinc-700">
-                    Conhecer a Plataforma
-                </a>
-            </div>
-        </div>
+    <section class="hero">
+        <h1>Proteção Tática em Tempo Real</h1>
+        <p>O Anjos é um ecossistema blindado para motoristas profissionais. Muito mais do que um aplicativo de localização, somos a sua central de intervenção imediata através de Geofencing e comunicação de emergência via Rádio PTT.</p>
     </section>
 
-    <section id="solucao" class="py-24 bg-white text-zinc-900 border-t border-zinc-200">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
-                    Por que o WhatsApp e Zello <span class="text-anjos">falham</span> quando a vida está em risco?
-                </h2>
-                <p class="text-lg text-zinc-600 font-medium">
-                    Você conhece a dor: grupos paralelos, áudios intermináveis que ninguém ouve, informações atrasadas. Quando cada segundo conta, o Anjos resolve isso com um protocolo militar de intervenção.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="arsenal" class="py-24 bg-zinc-50 text-zinc-900">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                
-                <div class="p-8 bg-zinc-900 rounded-3xl border border-zinc-800 text-white shadow-2xl">
-                    <div class="bg-anjos/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-anjos/20">
-                        <svg class="w-8 h-8 text-anjos" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-4">Central Tática do Líder (Master)</h3>
-                    <p class="text-zinc-400 mb-8 text-lg">
-                        Tenha controle absoluto. Visualize sua tropa inteira no mapa em tempo real. Identifique quem está em perigo e quem está no raio de apoio instantaneamente. Chega de perguntar localização no rádio.
-                    </p>
-                    <div class="bg-zinc-800 h-48 rounded-xl border border-zinc-700 flex items-center justify-center text-zinc-500 font-bold uppercase tracking-wider">
-                        [Visão do Mapa Admin]
-                    </div>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="flex gap-6 items-start bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
-                        <div class="bg-orange-100 p-3 rounded-lg text-anjos shrink-0">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xl mb-2 text-zinc-900">Mural de Ocorrências (Geofencing)</h4>
-                            <p class="text-zinc-600">Alerta inteligente. Se um motorista se aproximar a menos de 5km de um risco reportado, ele recebe um aviso visual e sonoro imediato para desviar a rota.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-6 items-start bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
-                        <div class="bg-orange-100 p-3 rounded-lg text-anjos shrink-0">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xl mb-2 text-zinc-900">Botão de Pânico Invisível</h4>
-                            <p class="text-zinc-600">Acionamento discreto. O alerta rasga a tela dos motoristas de apoio, sobrepondo Waze ou Uber, mostrando a rota e posição da vítima em tempo real.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-6 items-start bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
-                        <div class="bg-orange-100 p-3 rounded-lg text-anjos shrink-0">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xl mb-2 text-zinc-900">Rádio Tático PTT Automático</h4>
-                            <p class="text-zinc-600">Ao acionar o pânico, o microfone abre. Todos no raio de apoio ouvem a escuta ambiental do carro, coordenando a intervenção por voz. Superior a qualquer rádio comum.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="planos" class="py-24 bg-zinc-950 text-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-anjos">Estruture sua Autoridade</h2>
-                <p class="text-lg text-zinc-400 max-w-2xl mx-auto">Transforme sua liderança em um negócio seguro e respeitado. Escolha a infraestrutura ideal para a sua frota.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col hover:border-zinc-700 transition">
-                    <h3 class="text-2xl font-bold mb-2">Franquia Light</h3>
-                    <p class="text-zinc-500 text-sm font-bold mb-6 uppercase tracking-wider">Até 50 Motoristas</p>
-                    <div class="mb-8"><span class="text-4xl font-extrabold text-anjos">Fale Conosco</span></div>
-                    <ul class="space-y-4 mb-8 flex-1 text-zinc-300 font-medium">
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Dashboard Master Básico</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Mural de Ocorrências</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Botão de Pânico</li>
-                    </ul>
-                    <a href="#" class="block w-full py-4 text-center rounded-xl font-bold bg-zinc-800 hover:bg-zinc-700 transition">Solicitar Análise</a>
-                </div>
-
-                <div class="bg-zinc-900 border-2 border-anjos rounded-3xl p-8 flex flex-col transform scale-105 shadow-2xl shadow-anjos/10 relative">
-                    <div class="absolute -top-4 inset-x-0 flex justify-center"><span class="bg-anjos text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Líder de Mercado</span></div>
-                    <h3 class="text-2xl font-bold mb-2">Franquia Pro</h3>
-                    <p class="text-zinc-400 text-sm font-bold mb-6 uppercase tracking-wider">Até 500 Motoristas</p>
-                    <div class="mb-8"><span class="text-4xl font-extrabold text-anjos">Exclusivo</span></div>
-                    <ul class="space-y-4 mb-8 flex-1 text-zinc-200 font-medium">
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Tudo do Plano Light</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Relatórios de Performance</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Rádio Tático PTT Integrado</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Prioridade na Implantação</li>
-                    </ul>
-                    <a href="#" class="block w-full py-4 text-center rounded-xl font-bold bg-anjos hover:bg-anjos-dark transition text-white">Dominar Minha Região</a>
-                </div>
-
-                <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col hover:border-zinc-700 transition">
-                    <h3 class="text-2xl font-bold mb-2">Master Regional</h3>
-                    <p class="text-zinc-500 text-sm font-bold mb-6 uppercase tracking-wider">+500 Motoristas</p>
-                    <div class="mb-8"><span class="text-4xl font-extrabold text-anjos">Sob Consulta</span></div>
-                    <ul class="space-y-4 mb-8 flex-1 text-zinc-300 font-medium">
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Tudo do Plano Pro</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Exclusividade Territorial</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-anjos shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Consultoria Tática</li>
-                    </ul>
-                    <a href="#" class="block w-full py-4 text-center rounded-xl font-bold bg-zinc-800 hover:bg-zinc-700 transition">Agendar Reunião</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-zinc-950 text-zinc-500 py-12 border-t border-zinc-900">
-        <div class="container mx-auto px-6 text-center">
-            <img src="https://i.imgur.com/JAilfAx.png" alt="Anjos App Logo Branca" class="h-8 w-auto mx-auto mb-8 opacity-50" />
-            
-            <div class="flex justify-center gap-8 mb-8 text-sm font-semibold">
-                <a href="privacidade.html" class="hover:text-anjos transition">Política de Privacidade</a>
-                <a href="termos.html" class="hover:text-anjos transition">Termos de Uso</a>
-            </div>
-            
-            <p class="text-sm">
-                &copy; 2026 Anjos - A Central Tática de Segurança. Todos os direitos reservados.
-            </p>
-        </div>
+    <footer>
+        <img src="https://i.imgur.com/JAilfAx.png" alt="Logo Anjos Branca" class="logo-white">
+        <p>&copy; 2026 Anjos App - Segurança e Inteligência Tática. Todos os direitos reservados.</p>
     </footer>
 
 </body>

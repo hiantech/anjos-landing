@@ -1,49 +1,379 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjos - Central Tática de Segurança para Motoristas</title>
+    <title>Anjos - Sistema Tático de Segurança para Motoristas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #FF7023; --dark: #121214; --light: #F4F4F5; --text: #333; }
-        body { font-family: 'Inter', 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text); background-color: var(--light); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        a:hover { color: var(--primary); }
-        header { background: #ffffff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo-black { height: 45px; }
-        nav { display: flex; gap: 20px; }
-        nav a { font-weight: 600; font-size: 0.95rem; }
-        .hero { background: var(--dark); color: #ffffff; padding: 100px 5%; text-align: center; height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .hero h1 { font-size: 2.8rem; color: var(--primary); margin-bottom: 15px; }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #ccc; }
-        footer { background: var(--dark); color: #aaa; text-align: center; padding: 40px 5%; }
-        .logo-white { height: 40px; margin-bottom: 20px; }
+        :root {
+            --bg-dark: #09090B;
+            --bg-alt: #282A2C;
+            --accent: #FF7023;
+            --text-white: #FFFFFF;
+            --text-gray: #A1A1AA;
+            --ice-white: #F8FAFC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', sans-serif;
+            border-radius: 0 !important;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Tático */
+        header {
+            background-color: rgba(9, 9, 11, 0.98);
+            border-bottom: 2px solid var(--accent);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-header { height: 45px; }
+
+        .btn-download-top {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 22px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid var(--accent);
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-download-top:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        /* Seção Hero */
+        .hero {
+            padding: 200px 8% 120px;
+            text-align: left;
+            background: linear-gradient(90deg, #09090B 40%, rgba(9,9,11,0.6)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            max-width: 800px;
+        }
+
+        .hero h1 span { color: var(--accent); }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-gray);
+            max-width: 650px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        /* Quem Somos */
+        .who-we-are {
+            background-color: var(--bg-alt);
+            padding: 100px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .who-we-are h2 {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .who-we-are p {
+            font-size: 1.15rem;
+            color: var(--ice-white);
+            margin-bottom: 20px;
+        }
+
+        /* Benefícios (Cards Táticos) */
+        .benefits {
+            padding: 120px 8%;
+            text-align: center;
+        }
+
+        .benefits h2 {
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            background-color: var(--bg-alt);
+            padding: 50px 40px;
+            border-bottom: 6px solid var(--accent);
+            transition: 0.4s;
+            text-align: left;
+        }
+
+        .benefit-card:hover { background-color: #333; transform: scale(1.02); }
+
+        .benefit-card i {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background-color: var(--bg-alt);
+            padding: 120px 8%;
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .test-card {
+            background-color: var(--bg-dark);
+            padding: 40px;
+            border: 1px solid #3f3f46;
+        }
+
+        .test-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .test-card p { font-style: italic; font-size: 1.1rem; }
+
+        /* Call to Action */
+        .cta {
+            padding: 150px 8%;
+            text-align: center;
+            background: linear-gradient(rgba(255,112,35,0.1), rgba(9,9,11,1));
+        }
+
+        .btn-huge {
+            background-color: var(--accent);
+            color: white;
+            padding: 25px 60px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-decoration: none;
+            display: inline-block;
+            border: 3px solid var(--accent);
+            transition: 0.3s;
+        }
+
+        .btn-huge:hover { background: transparent; color: var(--accent); }
+
+        /* Footer */
+        footer {
+            background-color: #050505;
+            padding: 80px 8% 40px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .logo-footer { height: 70px; margin-bottom: 30px; opacity: 0.9; }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        /* Popup LGPD */
+        #lgpd-popup {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            background-color: var(--bg-alt);
+            border: 2px solid var(--accent);
+            padding: 25px;
+            z-index: 2000;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; }
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .who-we-are { grid-template-columns: 1fr; }
         }
     </style>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1311982923403110');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1311982923403110&ev=PageView&noscript=1"
+/></noscript>
 </head>
 <body>
 
-    <header>
-        <a href="index.html"><img src="https://i.imgur.com/FIzPpWY.png" alt="Logo Anjos Preta" class="logo-black"></a>
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="privacidade.html">Política de Privacidade</a>
-            <a href="termos.html">Termos de Uso</a>
-        </nav>
-    </header>
+<header>
+    <img src="https://i.imgur.com/pMmma7A.png" alt="Anjos Logo" class="logo-header">
+    <a href="/download/anjos-app.apk" download class="btn-download-top" onclick="fbq('track', 'Lead');">Baixe o App</a>
+</header>
 
-    <section class="hero">
-        <h1>Proteção Tática em Tempo Real</h1>
-        <p>O Anjos é um ecossistema blindado para motoristas profissionais. Muito mais do que um aplicativo de localização, somos a sua central de intervenção imediata através de Geofencing e comunicação de emergência via Rádio PTT.</p>
-    </section>
+<section class="hero">
+    <h1>A RUA NÃO É PARA AMADORES. <br><span>PROTEJA SUA VIDA.</span></h1>
+    <p>O Anjos é a tecnologia tática que transforma o isolamento do motorista em uma blindagem comunitária. Monitoramento real por quem entende de asfalto.</p>
+    <a href="/download/anjos-app.apk" download class="btn-huge" onclick="fbq('track', 'Lead');">COMEÇAR TESTE GRÁTIS</a>
+</section>
 
-    <footer>
-        <img src="https://i.imgur.com/JAilfAx.png" alt="Logo Anjos Branca" class="logo-white">
-        <p>&copy; 2026 Anjos App - Segurança e Inteligência Tática. Todos os direitos reservados.</p>
-    </footer>
+<section class="who-we-are">
+    <div>
+        <h2>QUEM SOMOS</h2>
+        <p>Eu sou Francisco Darlan, desenvolvedor e motorista por aplicativo em Salvador. Eu sei o que é sentir o frio na barriga ao aceitar uma corrida suspeita em uma área de risco sem ter a quem recorrer.</p>
+        <p>O Anjos nasceu dessa necessidade real. Fundei a Synthec para entregar tecnologia de elite para o homem do asfalto. Aqui, não somos números; somos uma tropa cuidando um do outro.</p>
+    </div>
+    <div style="text-align: center;">
+        <i class="fas fa-user-shield" style="font-size: 12rem; color: var(--accent); opacity: 0.1;"></i>
+    </div>
+</section>
+
+<section class="benefits">
+    <h2>Blindagem de Elite</h2>
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <i class="fas fa-eye"></i>
+            <h3>MODO VIGIA</h3>
+            <p>Sua rota é monitorada silenciosamente. Se você parar ou desviar sem aviso, o sistema aciona a rede de apoio imediatamente.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-microphone"></i>
+            <h3>RÁDIO TÁTICO PTT</h3>
+            <p>Comunicação instantânea sem distrações. Em caso de perigo, o áudio do seu carro é aberto para toda a tropa ouvir e agir.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-shield-virus"></i>
+            <h3>RADAR DE RISCO</h3>
+            <p>Receba alertas em tempo real de ocorrências num raio de 5km. O Anjos te avisa antes de você entrar no perigo.</p>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <h2>VOZES DO ASFALTO</h2>
+    <div class="testimonials-grid">
+        <div class="test-card">
+            <img src="https://i.imgur.com/ldokA95.jpeg" alt="Motorista 1" class="test-img">
+            <p>"O Anjos me deu a paz que o WhatsApp não dava. Aqui a intervenção é real."</p>
+            <h4 style="color: var(--accent); margin-top: 15px;">Ricardo - Salvador/BA</h4>
+        </div>
+        <div class="test-card">
+            <img src="https://i.imgur.com/JAJCKKL.jpeg" alt="Motorista 2" class="test-img">
+            <p>"A chamada fake e o card vermelho já me livraram de uma situação muito feia à noite."</p>
+            <h4 style="color: var(--accent); margin-top: 15px;">Marcos - Fortaleza/Ce</h4>
+        </div>
+        <div class="test-card">
+            <img src="https://i.imgur.com/o5iKIiC.jpeg" alt="Motorista 3" class="test-img">
+            <p>"O sistema de geofencing é absurdo. O app apita antes de eu entrar na rua perigosa."</p>
+            <h4 style="color: var(--accent); margin-top: 15px;">André - Natal/RN</h4>
+        </div>
+    </div>
+</section>
+
+<section class="cta" id="cta">
+    <h2>NÃO SEJA O PRÓXIMO ALVO.</h2>
+    <p>O Anjos é essencial para quem quer voltar vivo para casa todos os dias.</p>
+    <a href="/download/anjos-app.apk" download class="btn-huge" onclick="fbq('track', 'Lead');">BAIXAR AGORA - 7 DIAS GRÁTIS</a>
+</section>
+
+<footer>
+    <img src="https://i.imgur.com/KsR9ONv.png" alt="Anjos Branco Gelo" class="logo-footer">
+    <p style="color: #888; margin-bottom: 30px;">Anjos: Tecnologia, Respeito e Proteção.</p>
+    <div class="footer-links">
+        <a href="politica.html">Política de Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+        <a href="https://wa.me/5571981608415">Seja um Franqueado</a>
+    </div>
+    <p style="font-size: 0.8rem; color: #444;">&copy; 2026 Anjos - Todos os direitos reservados. Synthec Serviços Ltda - CNPJ: 63.713.504/0001-79</p>
+</footer>
+
+<div id="lgpd-popup">
+    <p>Utilizamos cookies e dados de localização para garantir sua segurança tática conforme a LGPD. Aceita nossa política?</p>
+    <button onclick="acceptLgpd()" style="background: var(--accent); color: white; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer;">CONCORDAR</button>
+</div>
+
+<script>
+    function acceptLgpd() {
+        localStorage.setItem('lgpd_anjos', 'true');
+        document.getElementById('lgpd-popup').style.display = 'none';
+    }
+    window.onload = function() {
+        if(!localStorage.getItem('lgpd_anjos')) {
+            document.getElementById('lgpd-popup').style.display = 'flex';
+        }
+    }
+</script>
 
 </body>
 </html>

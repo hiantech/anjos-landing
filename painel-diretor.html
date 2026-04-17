@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjos - Painel do Diretor</title>
+    <style>
+        :root {
+            --bg-color: #09090B;
+            --surface-color: #1A1A1E;
+            --primary-color: #FF7023;
+            --text-color: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --border-color: #333333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Estilo Janela Industrial (Zero arredondamento) */
+        .window {
+            background-color: var(--surface-color);
+            border: 1px solid var(--primary-color);
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0px 10px 30px rgba(255, 112, 35, 0.1);
+        }
+
+        .title-bar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--bg-color);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .main-panel {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* Cards de Resultado */
+        .card-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .card {
+            flex: 1;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card.highlight {
+            border: 1px solid var(--primary-color);
+        }
+
+        .card-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .card.highlight .card-value {
+            color: var(--primary-color);
+        }
+
+        .card.negative .card-value {
+            color: #ff4444;
+        }
+
+        .footer-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>🛡️ PROJETO ANJOS - SIMULADOR ESTRATÉGICO</span>
+            <span>DIRETORIA</span>
+        </div>
+
+        <div class="content">
+            <div class="sidebar">
+                <h2>PARÂMETROS DE OPERAÇÃO</h2>
+
+                <div class="form-group">
+                    <label><span>Motoristas Ativos (Diário)</span> <span id="valUsers"
+                            style="color:white; font-weight:bold;">5000</span></label>
+                    <input type="range" id="users" min="100" max="20000" step="100" value="5000" oninput="calculate()">
+                </div>
+
+                <div class="form-group">
+                    <label><span>Views Full Screen (Por Dia)</span> <span id="valFullViews"
+                            style="color:white; font-weight:bold;">4</span></label>
+                    <input type="range" id="fullViews" min="1" max="10" step="1" value="4" oninput="calculate()">
+                </div>
+
+                <div class="form-group">
+                    <label><span>eCPM Full Screen (R$)</span> <span id="valFullEcpm"
+                            style="color:white; font-weight:bold;">R$ 10,00</span></label>
+                    <input type="range" id="fullEcpm" min="2" max="30" step="0.5" value="10" oninput="calculate()">
+                </div>
+
+                <div class="form-group">
+                    <label><span>Views Banner (Por Dia)</span> <span id="valBannerViews"
+                            style="color:white; font-weight:bold;">30</span></label>
+                    <input type="range" id="bannerViews" min="5" max="100" step="5" value="30" oninput="calculate()">
+                </div>
+
+                <div class="form-group">
+                    <label><span>eCPM Banner (R$)</span> <span id="valBannerEcpm"
+                            style="color:white; font-weight:bold;">R$ 1,00</span></label>
+                    <input type="range" id="bannerEcpm" min="0.1" max="5" step="0.1" value="1" oninput="calculate()">
+                </div>
+
+                <div class="form-group">
+                    <label><span>Custo Servidor/Motorista (R$)</span> <span id="valCost"
+                            style="color:white; font-weight:bold;">R$ 0,40</span></label>
+                    <input type="range" id="cost" min="0.1" max="2" step="0.05" value="0.40" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="main-panel">
+                <h2>PROJEÇÃO FINANCEIRA MENSAL (30 DIAS)</h2>
+
+                <div class="card-row">
+                    <div class="card">
+                        <div class="card-title">Receita Full Screen</div>
+                        <div class="card-value" id="resFull">R$ 0,00</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Receita Banner</div>
+                        <div class="card-value" id="resBanner">R$ 0,00</div>
+                    </div>
+                </div>
+
+                <div class="card-row">
+                    <div class="card">
+                        <div class="card-title">Faturamento Bruto</div>
+                        <div class="card-value" id="resGross">R$ 0,00</div>
+                    </div>
+                    <div class="card negative">
+                        <div class="card-title">Custo Operacional (Servidor)</div>
+                        <div class="card-value" id="resCost">- R$ 0,00</div>
+                    </div>
+                </div>
+
+                <div class="card-row">
+                    <div class="card highlight" style="width: 100%;">
+                        <div class="card-title" style="color: var(--primary-color); font-weight: bold;">LUCRO LÍQUIDO
+                            ESTIMADO</div>
+                        <div class="card-value" id="resNet" style="font-size: 42px;">R$ 0,00</div>
+                    </div>
+                </div>
+
+                <div class="footer-note">
+                    "O aplicativo de transporte é a base de hoje, mas o Anjos é o império de amanhã." - Operação Ativa.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatMoney(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function calculate() {
+            // Pegar valores dos inputs
+            const users = parseFloat(document.getElementById('users').value);
+            const fullViews = parseFloat(document.getElementById('fullViews').value);
+            const fullEcpm = parseFloat(document.getElementById('fullEcpm').value);
+            const bannerViews = parseFloat(document.getElementById('bannerViews').value);
+            const bannerEcpm = parseFloat(document.getElementById('bannerEcpm').value);
+            const costPerUser = parseFloat(document.getElementById('cost').value);
+
+            // Atualizar labels
+            document.getElementById('valUsers').innerText = users.toLocaleString('pt-BR');
+            document.getElementById('valFullViews').innerText = fullViews;
+            document.getElementById('valFullEcpm').innerText = formatMoney(fullEcpm);
+            document.getElementById('valBannerViews').innerText = bannerViews;
+            document.getElementById('valBannerEcpm').innerText = formatMoney(bannerEcpm);
+            document.getElementById('valCost').innerText = formatMoney(costPerUser);
+
+            // Cálculos
+            const recFull = ((users * fullViews * 30) / 1000) * fullEcpm;
+            const recBanner = ((users * bannerViews * 30) / 1000) * bannerEcpm;
+            const recGross = recFull + recBanner;
+            const totalCost = users * costPerUser;
+            const netProfit = recGross - totalCost;
+
+            // Mostrar resultados
+            document.getElementById('resFull').innerText = formatMoney(recFull);
+            document.getElementById('resBanner').innerText = formatMoney(recBanner);
+            document.getElementById('resGross').innerText = formatMoney(recGross);
+            document.getElementById('resCost').innerText = "- " + formatMoney(totalCost);
+            document.getElementById('resNet').innerText = formatMoney(netProfit);
+        }
+
+        // Rodar cálculo inicial
+        calculate();
+    </script>
+</body>
+
+</html>

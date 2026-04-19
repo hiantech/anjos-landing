@@ -3,276 +3,237 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjos - Painel do Diretor</title>
+    <title>Painel Startup - AdMob</title>
+
     <style>
         :root {
-            --bg-color: #09090B;
-            --surface-color: #1A1A1E;
-            --primary-color: #FF7023;
-            --text-color: #FFFFFF;
-            --text-muted: #A0A0A0;
-            --border-color: #333333;
+            --bg: #0A0A0C;
+            --card: #1A1A1E;
+            --primary: #FF7023;
+            --text: #FFFFFF;
+            --muted: #A0A0A0;
+            --border: #333;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial;
             margin: 0;
             padding: 20px;
-            display: flex;
-            justify-content: center;
         }
 
-        /* Estilo Janela Industrial (Zero arredondamento) */
-        .window {
-            background-color: var(--surface-color);
-            border: 1px solid var(--primary-color);
-            width: 100%;
-            max-width: 1000px;
-            box-shadow: 0px 10px 30px rgba(255, 112, 35, 0.1);
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            border: 1px solid var(--primary);
         }
 
-        .title-bar {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 15px;
+        .header {
+            background: var(--primary);
+            padding: 10px;
             font-weight: bold;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
         }
 
         .content {
             display: flex;
-            flex-wrap: wrap;
-            padding: 20px;
             gap: 20px;
+            padding: 20px;
         }
 
         .sidebar {
             flex: 1;
-            min-width: 300px;
-            background-color: var(--bg-color);
-            padding: 20px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border);
+            padding: 15px;
         }
 
-        .main-panel {
+        .main {
             flex: 2;
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        h2 {
-            margin-top: 0;
-            font-size: 18px;
-            color: var(--primary-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-
-        .form-group input[type="range"] {
+        input {
             width: 100%;
-            accent-color: var(--primary-color);
+            margin: 8px 0;
+            padding: 10px;
+            background: #111;
+            border: none;
+            color: white;
+        }
+
+        button {
+            background: var(--primary);
+            border: none;
+            padding: 12px;
+            width: 100%;
+            color: white;
             cursor: pointer;
         }
 
-        /* Cards de Resultado */
-        .card-row {
-            display: flex;
-            gap: 15px;
-        }
-
         .card {
-            flex: 1;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 20px;
+            border: 1px solid var(--border);
+            padding: 15px;
             text-align: center;
         }
 
-        .card.highlight {
-            border: 1px solid var(--primary-color);
+        .highlight {
+            border: 1px solid var(--primary);
         }
 
-        .card-title {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .card-value {
-            font-size: 28px;
+        .value {
+            font-size: 22px;
             font-weight: bold;
-            color: var(--text-color);
         }
 
-        .card.highlight .card-value {
-            color: var(--primary-color);
+        .big {
+            font-size: 36px;
+            color: var(--primary);
         }
 
-        .card.negative .card-value {
-            color: #ff4444;
-        }
-
-        .footer-note {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 20px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 10px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="window">
-        <div class="title-bar">
-            <span>🛡️ PROJETO ANJOS - SIMULADOR ESTRATÉGICO</span>
-            <span>DIRETORIA</span>
-        </div>
+    <div class="container">
+        <div class="header">PAINEL ESTRATÉGICO - MONETIZAÇÃO ADMOB</div>
 
         <div class="content">
+
             <div class="sidebar">
-                <h2>PARÂMETROS DE OPERAÇÃO</h2>
 
-                <div class="form-group">
-                    <label><span>Motoristas Ativos (Diário)</span> <span id="valUsers"
-                            style="color:white; font-weight:bold;">5000</span></label>
-                    <input type="range" id="users" min="100" max="20000" step="100" value="5000" oninput="calculate()">
-                </div>
+                <label>Usuários diários (DAU)</label>
+                <input type="number" id="users" value="1500">
 
-                <div class="form-group">
-                    <label><span>Views Full Screen (Por Dia)</span> <span id="valFullViews"
-                            style="color:white; font-weight:bold;">4</span></label>
-                    <input type="range" id="fullViews" min="1" max="10" step="1" value="4" oninput="calculate()">
-                </div>
+                <label>Sessões por dia</label>
+                <input type="number" id="sessions" value="4">
 
-                <div class="form-group">
-                    <label><span>eCPM Full Screen (R$)</span> <span id="valFullEcpm"
-                            style="color:white; font-weight:bold;">R$ 10,00</span></label>
-                    <input type="range" id="fullEcpm" min="2" max="30" step="0.5" value="10" oninput="calculate()">
-                </div>
+                <label>eCPM Intersticial (R$)</label>
+                <input type="number" id="inter" value="10">
 
-                <div class="form-group">
-                    <label><span>Views Banner (Por Dia)</span> <span id="valBannerViews"
-                            style="color:white; font-weight:bold;">30</span></label>
-                    <input type="range" id="bannerViews" min="5" max="100" step="5" value="30" oninput="calculate()">
-                </div>
+                <label>eCPM Banner (R$)</label>
+                <input type="number" id="banner" value="1">
 
-                <div class="form-group">
-                    <label><span>eCPM Banner (R$)</span> <span id="valBannerEcpm"
-                            style="color:white; font-weight:bold;">R$ 1,00</span></label>
-                    <input type="range" id="bannerEcpm" min="0.1" max="5" step="0.1" value="1" oninput="calculate()">
-                </div>
+                <label>Crescimento mensal (%)</label>
+                <input type="number" id="growth" value="10">
 
-                <div class="form-group">
-                    <label><span>Custo Servidor/Motorista (R$)</span> <span id="valCost"
-                            style="color:white; font-weight:bold;">R$ 0,40</span></label>
-                    <input type="range" id="cost" min="0.1" max="2" step="0.05" value="0.40" oninput="calculate()">
-                </div>
+                <label>Retenção DAU/MAU (%)</label>
+                <input type="number" id="retention" value="20">
+
+                <label>Custo por usuário (R$)</label>
+                <input type="number" id="cost" value="0.40">
+
+                <label>Múltiplo Valuation</label>
+                <input type="number" id="multiple" value="24">
+
+                <button onclick="calc()">CALCULAR</button>
+
             </div>
 
-            <div class="main-panel">
-                <h2>PROJEÇÃO FINANCEIRA MENSAL (30 DIAS)</h2>
+            <div class="main">
 
-                <div class="card-row">
+                <div class="grid">
+
                     <div class="card">
-                        <div class="card-title">Receita Full Screen</div>
-                        <div class="card-value" id="resFull">R$ 0,00</div>
+                        <div>Receita Mensal</div>
+                        <div class="value" id="monthly">R$0</div>
                     </div>
+
                     <div class="card">
-                        <div class="card-title">Receita Banner</div>
-                        <div class="card-value" id="resBanner">R$ 0,00</div>
+                        <div>MAU Estimado</div>
+                        <div class="value" id="mau">0</div>
                     </div>
-                </div>
 
-                <div class="card-row">
                     <div class="card">
-                        <div class="card-title">Faturamento Bruto</div>
-                        <div class="card-value" id="resGross">R$ 0,00</div>
+                        <div>Lucro Mensal</div>
+                        <div class="value" id="profit">R$0</div>
                     </div>
-                    <div class="card negative">
-                        <div class="card-title">Custo Operacional (Servidor)</div>
-                        <div class="card-value" id="resCost">- R$ 0,00</div>
+
+                    <div class="card highlight">
+                        <div>Valuation</div>
+                        <div class="big" id="valuation">R$0</div>
                     </div>
+
                 </div>
 
-                <div class="card-row">
-                    <div class="card highlight" style="width: 100%;">
-                        <div class="card-title" style="color: var(--primary-color); font-weight: bold;">LUCRO LÍQUIDO
-                            ESTIMADO</div>
-                        <div class="card-value" id="resNet" style="font-size: 42px;">R$ 0,00</div>
-                    </div>
+                <div class="card">
+                    <div>Projeção 12 meses</div>
+                    <div id="projection" style="text-align:left; font-size:12px;"></div>
                 </div>
 
-                <div class="footer-note">
-                    "O aplicativo de transporte é a base de hoje, mas o Anjos é o império de amanhã." - Operação Ativa.
-                </div>
             </div>
         </div>
     </div>
 
     <script>
-        function formatMoney(value) {
-            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        function money(v) {
+            return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        function calculate() {
-            // Pegar valores dos inputs
-            const users = parseFloat(document.getElementById('users').value);
-            const fullViews = parseFloat(document.getElementById('fullViews').value);
-            const fullEcpm = parseFloat(document.getElementById('fullEcpm').value);
-            const bannerViews = parseFloat(document.getElementById('bannerViews').value);
-            const bannerEcpm = parseFloat(document.getElementById('bannerEcpm').value);
-            const costPerUser = parseFloat(document.getElementById('cost').value);
+        function calc() {
 
-            // Atualizar labels
-            document.getElementById('valUsers').innerText = users.toLocaleString('pt-BR');
-            document.getElementById('valFullViews').innerText = fullViews;
-            document.getElementById('valFullEcpm').innerText = formatMoney(fullEcpm);
-            document.getElementById('valBannerViews').innerText = bannerViews;
-            document.getElementById('valBannerEcpm').innerText = formatMoney(bannerEcpm);
-            document.getElementById('valCost').innerText = formatMoney(costPerUser);
+            let users = +document.getElementById('users').value;
+            let sessions = +document.getElementById('sessions').value;
+            let interEcpm = +document.getElementById('inter').value;
+            let bannerEcpm = +document.getElementById('banner').value;
+            let growth = +document.getElementById('growth').value / 100;
+            let retention = +document.getElementById('retention').value / 100;
+            let cost = +document.getElementById('cost').value;
+            let multiple = +document.getElementById('multiple').value;
 
-            // Cálculos
-            const recFull = ((users * fullViews * 30) / 1000) * fullEcpm;
-            const recBanner = ((users * bannerViews * 30) / 1000) * bannerEcpm;
-            const recGross = recFull + recBanner;
-            const totalCost = users * costPerUser;
-            const netProfit = recGross - totalCost;
+            // Impressões
+            let bannerImp = users * sessions * 30;
+            let interImp = users * sessions * 2 * 30;
 
-            // Mostrar resultados
-            document.getElementById('resFull').innerText = formatMoney(recFull);
-            document.getElementById('resBanner').innerText = formatMoney(recBanner);
-            document.getElementById('resGross').innerText = formatMoney(recGross);
-            document.getElementById('resCost').innerText = "- " + formatMoney(totalCost);
-            document.getElementById('resNet').innerText = formatMoney(netProfit);
+            let bannerRev = (bannerImp / 1000) * bannerEcpm;
+            let interRev = (interImp / 1000) * interEcpm;
+
+            let monthly = bannerRev + interRev;
+
+            // MAU
+            let mau = users / retention;
+
+            // Custo
+            let totalCost = users * cost;
+            let profit = monthly - totalCost;
+
+            // Valuation
+            let valuation = monthly * multiple;
+
+            document.getElementById('monthly').innerText = money(monthly);
+            document.getElementById('mau').innerText = Math.round(mau).toLocaleString();
+            document.getElementById('profit').innerText = money(profit);
+            document.getElementById('valuation').innerText = money(valuation);
+
+            // Projeção
+            let proj = "";
+            let currentUsers = users;
+
+            for (let i = 1; i <= 12; i++) {
+
+                currentUsers *= (1 + growth);
+
+                let bannerImp = currentUsers * sessions * 30;
+                let interImp = currentUsers * sessions * 2 * 30;
+
+                let rev = ((bannerImp / 1000) * bannerEcpm) + ((interImp / 1000) * interEcpm);
+
+                proj += "Mês " + i + ": " + money(rev) + "<br>";
+            }
+
+            document.getElementById('projection').innerHTML = proj;
         }
 
-        // Rodar cálculo inicial
-        calculate();
+        calc();
     </script>
+
 </body>
 
 </html>

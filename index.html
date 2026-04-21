@@ -4,275 +4,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anjos - Painel do Diretor</title>
+    <title>App Motoristas</title>
+    <link rel="icon" href="https://i.imgur.com/0dmumTR.png">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --bg-color: #09090B;
-            --surface-color: #1A1A1E;
-            --primary-color: #FF7023;
-            --text-color: #FFFFFF;
-            --text-muted: #A0A0A0;
-            --border-color: #333333;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            background-color: #09090B;
         }
 
-        /* Estilo Janela Industrial (Zero arredondamento) */
-        .window {
-            background-color: var(--surface-color);
-            border: 1px solid var(--primary-color);
-            width: 100%;
-            max-width: 1000px;
-            box-shadow: 0px 10px 30px rgba(255, 112, 35, 0.1);
+        .gradient-overlay {
+            background: linear-gradient(to right, rgba(9, 9, 11, 0.9), rgba(9, 9, 11, 0.3));
         }
 
-        .title-bar {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 15px;
-            font-weight: bold;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .content {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 20px;
-            gap: 20px;
-        }
-
-        .sidebar {
-            flex: 1;
-            min-width: 300px;
-            background-color: var(--bg-color);
-            padding: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .main-panel {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        h2 {
-            margin-top: 0;
-            font-size: 18px;
-            color: var(--primary-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-
-        .form-group input[type="range"] {
-            width: 100%;
-            accent-color: var(--primary-color);
-            cursor: pointer;
-        }
-
-        /* Cards de Resultado */
-        .card-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .card {
-            flex: 1;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            text-align: center;
-        }
-
-        .card.highlight {
-            border: 1px solid var(--primary-color);
-        }
-
-        .card-title {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .card-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        .card.highlight .card-value {
-            color: var(--primary-color);
-        }
-
-        .card.negative .card-value {
-            color: #ff4444;
-        }
-
-        .footer-note {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 20px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 10px;
+        .glow:hover {
+            box-shadow: 0 0 20px #FF7023;
         }
     </style>
 </head>
 
-<body>
+<body class="text-white">
 
-    <div class="window">
-        <div class="title-bar">
-            <span>PROJETO ANJOS - SIMULADOR ESTRATÉGICO</span>
-            <span>DIRETORIA</span>
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 bg-black/40 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <img src="https://i.imgur.com/pMmma7A.png" class="h-10">
+
+            <a href="#" class="bg-[#FF7023] px-5 py-2 font-semibold glow transition">
+                Baixar App
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="h-screen flex items-center relative">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c" class="w-full h-full object-cover">
+            <div class="absolute inset-0 gradient-overlay"></div>
         </div>
 
-        <div class="content">
-            <div class="sidebar">
-                <h2>PARÂMETROS DE OPERAÇÃO</h2>
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <h1 class="text-5xl font-bold mb-4">
+                Ganhe mais dirigindo com inteligência
+            </h1>
+            <p class="text-lg mb-6 text-gray-300">
+                Tecnologia avançada para motoristas aumentarem seus ganhos com segurança.
+            </p>
+            <a href="#" class="bg-[#FF7023] px-6 py-3 text-lg font-semibold glow transition">
+                Começar agora
+            </a>
+        </div>
+    </section>
 
-                <div class="form-group">
-                    <label><span>Motoristas Ativos (Diário)</span> <span id="valUsers"
-                            style="color:white; font-weight:bold;">5000</span></label>
-                    <input type="range" id="users" min="100" max="20000" step="100" value="5000" oninput="calculate()">
-                </div>
+    <!-- QUEM SOMOS -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6">
 
-                <div class="form-group">
-                    <label><span>Views Full Screen (Por Dia)</span> <span id="valFullViews"
-                            style="color:white; font-weight:bold;">3</span></label>
-                    <input type="range" id="fullViews" min="1" max="10" step="1" value="3" oninput="calculate()">
-                </div>
-
-                <div class="form-group">
-                    <label><span>eCPM Full Screen (R$)</span> <span id="valFullEcpm"
-                            style="color:white; font-weight:bold;">R$ 8,00</span></label>
-                    <input type="range" id="fullEcpm" min="2" max="30" step="0.5" value="8" oninput="calculate()">
-                </div>
-
-                <div class="form-group">
-                    <label><span>Views Banner (Por Dia)</span> <span id="valBannerViews"
-                            style="color:white; font-weight:bold;">20</span></label>
-                    <input type="range" id="bannerViews" min="5" max="100" step="5" value="20" oninput="calculate()">
-                </div>
-
-                <div class="form-group">
-                    <label><span>eCPM Banner (R$)</span> <span id="valBannerEcpm"
-                            style="color:white; font-weight:bold;">R$ 0,50</span></label>
-                    <input type="range" id="bannerEcpm" min="0.1" max="5" step="0.1" value="0.5" oninput="calculate()">
-                </div>
-
-                <div class="form-group">
-                    <label><span>Custo Servidor/Motorista (R$)</span> <span id="valCost"
-                            style="color:white; font-weight:bold;">R$ 0,30</span></label>
-                    <input type="range" id="cost" min="0.05" max="2" step="0.05" value="0.30" oninput="calculate()">
-                </div>
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Quem somos</h2>
+                <p class="text-gray-400">
+                    Somos uma plataforma tecnológica criada para ajudar motoristas a tomarem decisões mais inteligentes,
+                    aumentando seus ganhos e garantindo mais segurança no dia a dia.
+                </p>
             </div>
 
-            <div class="main-panel">
-                <h2>PROJEÇÃO FINANCEIRA MENSAL (30 DIAS)</h2>
+            <img src="https://i.imgur.com/mUvC9uw.png" class="rounded-lg">
+        </div>
+    </section>
 
-                <div class="card-row">
-                    <div class="card">
-                        <div class="card-title">Receita Full Screen</div>
-                        <div class="card-value" id="resFull">R$ 0,00</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-title">Receita Banner</div>
-                        <div class="card-value" id="resBanner">R$ 0,00</div>
-                    </div>
+    <!-- FUNCIONALIDADES -->
+    <section class="py-20 bg-[#111]">
+        <div class="max-w-7xl mx-auto text-center px-6">
+            <h2 class="text-3xl font-bold mb-10">O que oferecemos</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <div class="p-6 bg-[#1a1a1a] hover:bg-[#222] transition">
+                    <h3 class="text-xl font-semibold mb-2">Mapa inteligente</h3>
+                    <p class="text-gray-400">Veja as melhores regiões para faturar mais.</p>
                 </div>
 
-                <div class="card-row">
-                    <div class="card">
-                        <div class="card-title">Faturamento Bruto</div>
-                        <div class="card-value" id="resGross">R$ 0,00</div>
-                    </div>
-                    <div class="card negative">
-                        <div class="card-title">Custo Operacional (Servidor)</div>
-                        <div class="card-value" id="resCost">- R$ 0,00</div>
-                    </div>
+                <div class="p-6 bg-[#1a1a1a] hover:bg-[#222] transition">
+                    <h3 class="text-xl font-semibold mb-2">Análise de ganhos</h3>
+                    <p class="text-gray-400">Saiba exatamente onde lucrar mais.</p>
                 </div>
 
-                <div class="card-row">
-                    <div class="card highlight" style="width: 100%;">
-                        <div class="card-title" style="color: var(--primary-color); font-weight: bold;">LUCRO LÍQUIDO
-                            ESTIMADO</div>
-                        <div class="card-value" id="resNet" style="font-size: 42px;">R$ 0,00</div>
-                    </div>
+                <div class="p-6 bg-[#1a1a1a] hover:bg-[#222] transition">
+                    <h3 class="text-xl font-semibold mb-2">Segurança ativa</h3>
+                    <p class="text-gray-400">Monitoramento inteligente durante corridas.</p>
                 </div>
 
-                <div class="footer-note">
-                    "O aplicativo de transporte é a base de hoje, mas o Anjos é o império de amanhã." - Operação Ativa.
-                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        function formatMoney(value) {
-            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
+    <!-- TESTEMUNHOS -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto text-center px-6">
+            <h2 class="text-3xl font-bold mb-10">O que dizem</h2>
 
-        function calculate() {
-            // Pegar valores dos inputs
-            const users = parseFloat(document.getElementById('users').value);
-            const fullViews = parseFloat(document.getElementById('fullViews').value);
-            const fullEcpm = parseFloat(document.getElementById('fullEcpm').value);
-            const bannerViews = parseFloat(document.getElementById('bannerViews').value);
-            const bannerEcpm = parseFloat(document.getElementById('bannerEcpm').value);
-            const costPerUser = parseFloat(document.getElementById('cost').value);
+            <div class="grid md:grid-cols-3 gap-6">
 
-            // Atualizar labels
-            document.getElementById('valUsers').innerText = users.toLocaleString('pt-BR');
-            document.getElementById('valFullViews').innerText = fullViews;
-            document.getElementById('valFullEcpm').innerText = formatMoney(fullEcpm);
-            document.getElementById('valBannerViews').innerText = bannerViews;
-            document.getElementById('valBannerEcpm').innerText = formatMoney(bannerEcpm);
-            document.getElementById('valCost').innerText = formatMoney(costPerUser);
+                <div class="bg-[#111] p-6">
+                    <img src="https://i.imgur.com/ldokA95.jpeg" class="w-16 h-16 rounded-full mx-auto mb-4">
+                    <p class="text-gray-400">"Meu faturamento aumentou muito!"</p>
+                </div>
 
-            // Cálculos
-            const recFull = ((users * fullViews * 30) / 1000) * fullEcpm;
-            const recBanner = ((users * bannerViews * 30) / 1000) * bannerEcpm;
-            const recGross = recFull + recBanner;
-            const totalCost = users * costPerUser;
-            const netProfit = recGross - totalCost;
+                <div class="bg-[#111] p-6">
+                    <img src="https://i.imgur.com/JAJCKKL.jpeg" class="w-16 h-16 rounded-full mx-auto mb-4">
+                    <p class="text-gray-400">"Agora dirijo com mais segurança."</p>
+                </div>
 
-            // Mostrar resultados
-            document.getElementById('resFull').innerText = formatMoney(recFull);
-            document.getElementById('resBanner').innerText = formatMoney(recBanner);
-            document.getElementById('resGross').innerText = formatMoney(recGross);
-            document.getElementById('resCost').innerText = "- " + formatMoney(totalCost);
-            document.getElementById('resNet').innerText = formatMoney(netProfit);
-        }
+                <div class="bg-[#111] p-6">
+                    <img src="https://i.imgur.com/o5iKIiC.jpeg" class="w-16 h-16 rounded-full mx-auto mb-4">
+                    <p class="text-gray-400">"App essencial pra quem dirige."</p>
+                </div>
 
-        // Rodar cálculo inicial
-        calculate();
-    </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="py-20 bg-[#111] text-center">
+        <h2 class="text-4xl font-bold mb-4">
+            Pronto para ganhar mais?
+        </h2>
+        <p class="text-gray-400 mb-6">
+            Baixe agora e transforme seus resultados.
+        </p>
+        <a href="#" class="bg-[#FF7023] px-8 py-4 text-lg font-semibold glow">
+            Baixar App agora
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 bg-black text-gray-400">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+
+            <div>
+                <img src="https://i.imgur.com/KsR9ONv.png" class="h-10 mb-4">
+                <p>© 2026 Todos os direitos reservados</p>
+            </div>
+
+            <div>
+                <h3 class="text-white mb-2">Links</h3>
+                <ul>
+                    <li><a href="https://appanjos.com.br/politica.html">Política de Privacidade</a></li>
+                    <li><a href="https://appanjos.com.br/termos.html">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-white mb-2">Contato</h3>
+                <p>contato@app.com</p>
+            </div>
+
+        </div>
+    </footer>
+
 </body>
 
 </html>

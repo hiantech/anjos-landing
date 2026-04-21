@@ -1,173 +1,443 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Motoristas</title>
-    <link rel="icon" href="https://i.imgur.com/0dmumTR.png">
+    <meta name="description"
+        content="Anjos - O co-piloto definitivo para segurança e gestão financeira de motoristas de aplicativo.">
+    <title>Anjos | Inteligência Tática para Motoristas</title>
 
-    <!-- Tailwind -->
+    <link rel="icon" href="https://i.imgur.com/0dmumTR.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#09090B',
+                        brand: '#FF7023',
+                        surface: '#141417',
+                        surfaceLight: '#1A1A1E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Sora', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+        /* Efeitos Personalizados */
         body {
-            font-family: 'Inter', sans-serif;
             background-color: #09090B;
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        .gradient-overlay {
-            background: linear-gradient(to right, rgba(9, 9, 11, 0.9), rgba(9, 9, 11, 0.3));
+        .glow-button {
+            box-shadow: 0 0 15px rgba(255, 112, 35, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .glow:hover {
-            box-shadow: 0 0 20px #FF7023;
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(255, 112, 35, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .glass-header {
+            background: rgba(9, 9, 11, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(9, 9, 11, 0.4) 0%, rgba(9, 9, 11, 1) 100%), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Ocultar elementos para a animação inicial do GSAP */
+        .gsap-reveal {
+            opacity: 0;
+            visibility: hidden;
         }
     </style>
 </head>
 
-<body class="text-white">
+<body class="antialiased selection:bg-brand selection:text-white">
 
-    <!-- HEADER -->
-    <header class="fixed w-full top-0 z-50 bg-black/40 backdrop-blur-lg">
-        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-            <img src="https://i.imgur.com/pMmma7A.png" class="h-10">
+    <header class="fixed w-full top-0 z-50 glass-header transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <img src="https://i.imgur.com/pMmma7A.png" alt="Logo Anjos" class="h-8 md:h-10">
+            </a>
 
-            <a href="#" class="bg-[#FF7023] px-5 py-2 font-semibold glow transition">
-                Baixar App
+            <a href="#download"
+                class="flex items-center gap-2 bg-white text-dark font-semibold px-5 py-2.5 rounded-full hover:bg-gray-200 transition-colors">
+                <i data-lucide="play" class="w-4 h-4 fill-dark"></i>
+                <span class="text-sm md:text-base">Baixar App</span>
             </a>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="h-screen flex items-center relative">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c" class="w-full h-full object-cover">
-            <div class="absolute inset-0 gradient-overlay"></div>
+    <section class="relative min-h-screen flex items-center justify-center pt-20 hero-bg">
+        <div class="absolute inset-0 bg-dark/60 z-0"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div
+                class="inline-block mb-4 px-4 py-1.5 rounded-full border border-brand/30 bg-brand/10 text-brand font-medium text-sm tracking-wide gsap-reveal">
+                O APLICATIVO DEFINITIVO PARA MOTORISTAS
+            </div>
+            <h1
+                class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight gsap-reveal">
+                Segurança Tática e <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-orange-400">Lucro
+                    Blindado</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light leading-relaxed gsap-reveal">
+                Assuma o controle da sua operação. O Anjos é o seu co-piloto inteligente que calcula suas metas, separa
+                os custos e vigia suas corridas.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center gsap-reveal">
+                <a href="#download"
+                    class="w-full sm:w-auto bg-brand text-white font-semibold text-lg px-8 py-4 rounded-lg glow-button flex items-center justify-center gap-3">
+                    Começar Agora
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#funcionalidades"
+                    class="w-full sm:w-auto text-white hover:text-brand font-medium px-8 py-4 transition-colors flex items-center justify-center gap-2">
+                    Conhecer Recursos
+                </a>
+            </div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <h1 class="text-5xl font-bold mb-4">
-                Ganhe mais dirigindo com inteligência
-            </h1>
-            <p class="text-lg mb-6 text-gray-300">
-                Tecnologia avançada para motoristas aumentarem seus ganhos com segurança.
-            </p>
-            <a href="#" class="bg-[#FF7023] px-6 py-3 text-lg font-semibold glow transition">
-                Começar agora
-            </a>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <i data-lucide="mouse" class="w-6 h-6"></i>
         </div>
     </section>
 
-    <!-- QUEM SOMOS -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6">
+    <section id="sobre" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 gsap-reveal">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">Feito por quem conhece a <span
+                            class="text-brand">realidade das ruas.</span></h2>
+                    <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                        O Anjos não foi criado em um escritório fechado. Ele nasceu da experiência de mais de 6 anos
+                        atrás do volante. Entendemos que motoristas de aplicativo não precisam de planilhas complexas,
+                        precisam de respostas rápidas no semáforo.
+                    </p>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Nossa missão é transformar motoristas comuns em profissionais de elite, fornecendo um
+                        ecossistema que protege a sua integridade física com o <strong>Modo Vigia</strong> e garante o
+                        seu lucro líquido no final do mês com o nosso <strong>Motor Financeiro</strong>.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <div class="w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center text-brand">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            Inteligência baseada em dados reais de mercado.
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <div class="w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center text-brand">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            Foco total na proteção do seu patrimônio e da sua vida.
+                        </li>
+                    </ul>
+                </div>
+                <div class="order-1 lg:order-2 relative gsap-reveal">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-brand/20 to-transparent rounded-2xl transform translate-x-4 translate-y-4 -z-10">
+                    </div>
+                    <img src="https://i.imgur.com/mUvC9uw.png" alt="App Anjos em funcionamento"
+                        class="rounded-2xl shadow-2xl shadow-black/50 border border-white/5 w-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div>
-                <h2 class="text-3xl font-bold mb-4">Quem somos</h2>
-                <p class="text-gray-400">
-                    Somos uma plataforma tecnológica criada para ajudar motoristas a tomarem decisões mais inteligentes,
-                    aumentando seus ganhos e garantindo mais segurança no dia a dia.
+    <section id="funcionalidades" class="py-24 bg-[#0c0c0f]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">Seu Painel Tático</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Ferramentas de precisão industrial desenhadas para
+                    quem opera no asfalto.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="bg-surface p-8 rounded-xl border border-white/5 hover:border-brand/50 transition-colors group gsap-reveal">
+                    <div
+                        class="w-14 h-14 bg-dark rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand/10 transition-colors">
+                        <i data-lucide="shield-alert" class="w-7 h-7 text-brand"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-3">Modo Vigia</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Rastreamento em background, botão de pânico tático e alertas de segurança. Sua proteção é
+                        silenciosa e implacável.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-surface p-8 rounded-xl border border-white/5 hover:border-brand/50 transition-colors group gsap-reveal">
+                    <div
+                        class="w-14 h-14 bg-dark rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand/10 transition-colors">
+                        <i data-lucide="cpu" class="w-7 h-7 text-brand"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-3">Motor Financeiro</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Esqueça a conta de padaria. O app calcula horas de trabalho, custo de combustível e metas
+                        baseadas na dificuldade de cada dia.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-surface p-8 rounded-xl border border-white/5 hover:border-brand/50 transition-colors group gsap-reveal">
+                    <div
+                        class="w-14 h-14 bg-dark rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand/10 transition-colors">
+                        <i data-lucide="crosshair" class="w-7 h-7 text-brand"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-3">Gestão de Turno</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Controle preciso do odômetro via GPS e fechamento de caixa diário destrinchado por plataforma
+                        (Uber, 99, inDrive).
+                    </p>
+                </div>
+
+                <div
+                    class="bg-surface p-8 rounded-xl border border-white/5 hover:border-brand/50 transition-colors group gsap-reveal">
+                    <div
+                        class="w-14 h-14 bg-dark rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand/10 transition-colors">
+                        <i data-lucide="bar-chart-3" class="w-7 h-7 text-brand"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-semibold mb-3">Relatórios em PDF</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Visão empresarial da sua operação. Exporte dados profissionais em PDF para analisar médias de
+                        R$/Hora e R$/Km.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-dark relative overflow-hidden">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/5 rounded-full blur-[120px] -z-10">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Aprovado pela Elite</h2>
+                <p class="text-gray-400 text-lg">O que os motoristas estão falando sobre o Anjos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-surface/80 backdrop-blur-sm p-8 rounded-2xl border border-white/5 gsap-reveal">
+                    <div class="flex gap-1 mb-6 text-brand">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-8 leading-relaxed">
+                        "A previsibilidade de ganhos mudou minha rotina. Saber exatamente a hora de desligar o carro,
+                        porque a meta bruta que inclui a gasolina já foi batida, é libertador."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.imgur.com/ldokA95.jpeg" alt="Carlos M."
+                            class="w-12 h-12 rounded-full object-cover border-2 border-surfaceLight">
+                        <div>
+                            <h4 class="font-heading font-semibold text-white">Carlos M.</h4>
+                            <p class="text-xs text-gray-500">Motorista Uber Black</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-surface/80 backdrop-blur-sm p-8 rounded-2xl border border-brand/20 relative gsap-reveal transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-brand rounded-b-md"></div>
+                    <div class="flex gap-1 mb-6 text-brand">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-8 leading-relaxed">
+                        "Trabalhar com o Modo Vigia ativado me dá a tranquilidade que eu precisava. O app é leve, escuro
+                        não cansa a vista à noite e os relatórios em PDF são impecáveis."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.imgur.com/JAJCKKL.jpeg" alt="Roberto A."
+                            class="w-12 h-12 rounded-full object-cover border-2 border-surfaceLight">
+                        <div>
+                            <h4 class="font-heading font-semibold text-white">Roberto A.</h4>
+                            <p class="text-xs text-gray-500">Motorista UberX / 99</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface/80 backdrop-blur-sm p-8 rounded-2xl border border-white/5 gsap-reveal">
+                    <div class="flex gap-1 mb-6 text-brand">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-8 leading-relaxed">
+                        "A inteligência do Motor Financeiro é absurda. Ele entende que quarta-feira é fraco e recalcula
+                        o combustível e as horas. Parece que tenho um contador no painel do carro."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.imgur.com/o5iKIiC.jpeg" alt="Fernando T."
+                            class="w-12 h-12 rounded-full object-cover border-2 border-surfaceLight">
+                        <div>
+                            <h4 class="font-heading font-semibold text-white">Fernando T.</h4>
+                            <p class="text-xs text-gray-500">Motorista Comfort</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="py-24 bg-gradient-to-b from-dark to-[#1a0a00]">
+        <div class="max-w-4xl mx-auto px-6 text-center gsap-reveal">
+            <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Pronto para assumir o comando?</h2>
+            <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                Baixe o Anjos agora. Configure sua meta, inicie seu turno e blinde a sua operação.
+            </p>
+            <a href="#"
+                class="inline-flex items-center gap-4 bg-brand text-white font-bold text-xl px-10 py-5 rounded-xl glow-button hover:scale-105 transition-transform duration-300">
+                <i data-lucide="download" class="w-6 h-6"></i>
+                Baixar App Agora
+            </a>
+            <p class="mt-6 text-sm text-gray-500">Disponível em breve para dispositivos Android.</p>
+        </div>
+    </section>
+
+    <footer class="bg-[#050506] pt-16 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <img src="https://i.imgur.com/KsR9ONv.png" alt="Logo Anjos Footer" class="h-10 mb-6">
+                    <p class="text-gray-500 text-sm max-w-sm leading-relaxed mb-6">
+                        Anjos é o sistema definitivo de gestão financeira e segurança desenvolvido exclusivamente para
+                        motoristas de aplicativos profissionais.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-gray-400 hover:bg-brand hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-gray-400 hover:bg-brand hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-gray-400 hover:bg-brand hover:text-white transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-semibold text-white mb-6">Institucional</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#sobre" class="text-gray-500 hover:text-brand text-sm transition-colors">Quem
+                                Somos</a></li>
+                        <li><a href="#funcionalidades"
+                                class="text-gray-500 hover:text-brand text-sm transition-colors">Funcionalidades</a>
+                        </li>
+                        <li><a href="mailto:suporte@appanjos.com.br"
+                                class="text-gray-500 hover:text-brand text-sm transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-semibold text-white mb-6">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://appanjos.com.br/termos.html"
+                                class="text-gray-500 hover:text-white text-sm transition-colors">Termos de Uso</a></li>
+                        <li><a href="https://appanjos.com.br/politica.html"
+                                class="text-gray-500 hover:text-white text-sm transition-colors">Política de
+                                Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-white/5 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-xs">
+                    &copy; 2026 Anjos App. Todos os direitos reservados.
+                </p>
+                <p class="text-gray-600 text-xs flex items-center gap-1">
+                    Feito com <i data-lucide="heart" class="w-3 h-3 text-brand fill-brand"></i> para os motoristas.
                 </p>
             </div>
-
-            <img src="https://i.imgur.com/mUvC9uw.png" class="rounded-lg">
-        </div>
-    </section>
-
-    <!-- FUNCIONALIDADES -->
-    <section class="py-20 bg-[#111]">
-        <div class="max-w-7xl mx-auto text-center px-6">
-            <h2 class="text-3xl font-bold mb-10">O que oferecemos</h2>
-
-            <div class="grid md:grid-cols-3 gap-6">
-
-                <div class="p-6 bg-[#1a1a1a] hover:bg-[#222] transition">
-                    <h3 class="text-xl font-semibold mb-2">Mapa inteligente</h3>
-                    <p class="text-gray-400">Veja as melhores regiões para faturar mais.</p>
-                </div>
-
-                <div class="p-6 bg-[#1a1a1a] hover:bg-[#222] transition">
-                    <h3 class="text-xl font-semibold mb-2">Análise de ganhos</h3>
-                    <p class="text-gray-400">Saiba exatamente onde lucrar mais.</p>
-                </div>
-
-                <div class="p-6 bg-[#1a1a1a] hover:bg-[#222] transition">
-                    <h3 class="text-xl font-semibold mb-2">Segurança ativa</h3>
-                    <p class="text-gray-400">Monitoramento inteligente durante corridas.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTEMUNHOS -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto text-center px-6">
-            <h2 class="text-3xl font-bold mb-10">O que dizem</h2>
-
-            <div class="grid md:grid-cols-3 gap-6">
-
-                <div class="bg-[#111] p-6">
-                    <img src="https://i.imgur.com/ldokA95.jpeg" class="w-16 h-16 rounded-full mx-auto mb-4">
-                    <p class="text-gray-400">"Meu faturamento aumentou muito!"</p>
-                </div>
-
-                <div class="bg-[#111] p-6">
-                    <img src="https://i.imgur.com/JAJCKKL.jpeg" class="w-16 h-16 rounded-full mx-auto mb-4">
-                    <p class="text-gray-400">"Agora dirijo com mais segurança."</p>
-                </div>
-
-                <div class="bg-[#111] p-6">
-                    <img src="https://i.imgur.com/o5iKIiC.jpeg" class="w-16 h-16 rounded-full mx-auto mb-4">
-                    <p class="text-gray-400">"App essencial pra quem dirige."</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section class="py-20 bg-[#111] text-center">
-        <h2 class="text-4xl font-bold mb-4">
-            Pronto para ganhar mais?
-        </h2>
-        <p class="text-gray-400 mb-6">
-            Baixe agora e transforme seus resultados.
-        </p>
-        <a href="#" class="bg-[#FF7023] px-8 py-4 text-lg font-semibold glow">
-            Baixar App agora
-        </a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="py-10 bg-black text-gray-400">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6">
-
-            <div>
-                <img src="https://i.imgur.com/KsR9ONv.png" class="h-10 mb-4">
-                <p>© 2026 Todos os direitos reservados</p>
-            </div>
-
-            <div>
-                <h3 class="text-white mb-2">Links</h3>
-                <ul>
-                    <li><a href="https://appanjos.com.br/politica.html">Política de Privacidade</a></li>
-                    <li><a href="https://appanjos.com.br/termos.html">Termos de Uso</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h3 class="text-white mb-2">Contato</h3>
-                <p>contato@app.com</p>
-            </div>
-
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+
+        // Registrar ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header Glass Effect on Scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.style.backgroundColor = 'rgba(9, 9, 11, 0.9)';
+            } else {
+                header.classList.remove('shadow-lg');
+                header.style.backgroundColor = 'rgba(9, 9, 11, 0.7)';
+            }
+        });
+
+        // Configuração de Animações de Scroll
+        const revealElements = document.querySelectorAll('.gsap-reveal');
+
+        // Define estado inicial para evitar flashes na tela
+        gsap.set(revealElements, { autoAlpha: 0, y: 30 });
+
+        revealElements.forEach((elem) => {
+            gsap.to(elem, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "top 85%", // Dispara quando o topo do elemento atinge 85% da tela
+                    toggleActions: "play none none reverse"
+                },
+                duration: 0.8,
+                autoAlpha: 1,
+                y: 0,
+                ease: "power3.out",
+                stagger: 0.2 // Se for uma lista de itens próximos, eles entram em cascata
+            });
+        });
+    </script>
 </body>
 
 </html>

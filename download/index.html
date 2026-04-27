@@ -1,11 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anjos | Baixando App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,7 +22,12 @@
         }
     </script>
     <style>
-        body { background-color: #09090B; color: #ffffff; font-family: 'Inter', sans-serif; }
+        body {
+            background-color: #09090B;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
         .loader {
             border: 3px solid #141417;
             border-top: 3px solid #FF7023;
@@ -30,13 +36,23 @@
             height: 40px;
             animation: spin 1s linear infinite;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
+
 <body class="flex items-center justify-center min-h-screen">
     <div class="text-center p-8 max-w-md w-full">
         <img src="https://i.imgur.com/pMmma7A.png" alt="Anjos" class="h-12 mx-auto mb-8">
-        
+
         <div id="status-container">
             <div class="loader mx-auto mb-6"></div>
             <h1 class="font-heading text-2xl font-bold mb-2">Iniciando download...</h1>
@@ -45,20 +61,22 @@
 
         <div id="manual-container" class="mt-8 hidden">
             <p class="text-gray-500 text-xs mb-4">O download não começou?</p>
-            <a href="anjos.apk" class="text-brand font-semibold hover:underline">Clique aqui para baixar manualmente</a>
+            <a href="anjos-app.apk" class="text-brand font-semibold hover:underline">Clique aqui para baixar
+                manualmente</a>
         </div>
 
         <div class="mt-12 p-4 bg-surface border border-white/5 rounded-lg text-left">
             <h2 class="text-xs font-bold text-brand uppercase tracking-widest mb-2">Dica de Instalação</h2>
             <p class="text-xs text-gray-400 leading-relaxed">
-                Como o app ainda está em fase de distribuição direta, seu celular pode perguntar se você deseja "Instalar de fontes desconhecidas". Pode confirmar, é o procedimento padrão para arquivos .apk.
+                Como o app ainda está em fase de distribuição direta, seu celular pode perguntar se você deseja
+                "Instalar de fontes desconhecidas". Pode confirmar, é o procedimento padrão para arquivos .apk.
             </p>
         </div>
     </div>
 
     <script>
         // Configurações
-        const DOWNLOAD_URL = 'anjos.apk';
+        const DOWNLOAD_URL = 'anjos-app.apk';
         const DELAY_MS = 2000;
 
         window.onload = () => {
@@ -66,18 +84,19 @@
                 // Tenta iniciar o download
                 const link = document.createElement('a');
                 link.href = DOWNLOAD_URL;
-                link.download = 'Anjos.apk';
+                link.download = 'anjos-app.apk';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
 
                 // Mostra o botão manual após a tentativa
                 document.getElementById('manual-container').classList.remove('hidden');
-                
+
                 // Atualiza o texto de status
                 document.querySelector('h1').innerText = 'Baixando o App';
             }, DELAY_MS);
         };
     </script>
 </body>
+
 </html>
